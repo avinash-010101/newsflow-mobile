@@ -1,16 +1,65 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState, useMemo } from "react";
+import NewsHeader from "@/components/news/NewsHeader";
+import BreakingTicker from "@/components/news/BreakingTicker";
+import CategoryTabs from "@/components/news/CategoryTabs";
+import FeaturedArticle from "@/components/news/FeaturedArticle";
+import ArticleCard from "@/components/news/ArticleCard";
+import TrendingSidebar from "@/components/news/TrendingSidebar";
+import BottomNav from "@/components/news/BottomNav";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { articles, type Category } from "@/data/newsData";
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const Index = () => {
+  const [activeCategory, setActiveCategory] = useState<Category>("All");
+  const containerRef = useScrollReveal();
+
+  const filtered = useMemo(() => {
+    if (activeCategory === "All") return articles;
+    return articles.filter((a) => a.category === activeCategory);
+  }, [activeCategory]);
+
+  const featured = filtered.find((a) => a.isFeatured) || filtered[0];
+  const rest = filtered.filter((a) => a.id !== featured?.id);
+
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
+    <div className="min-h-screen bg-background pb-20 lg:pb-0">
+      <NewsHeader />
+      <BreakingTicker />
+      <CategoryTabs active={activeCategory} onChange={setActiveCategory} />
+
+      <main ref={containerRef} className="container mt-6">
+        <div className="lg:flex lg:gap-8">
+          {/* Main column */}
+          <div className="lg:flex-1">
+            {featured && <FeaturedArticle article={featured} />}
+
+            <div className="mt-6">
+              <h2 className="scroll-reveal font-heading text-lg font-bold text-foreground mb-1">
+                Latest Stories
+              </h2>
+              {rest.map((article, i) => (
+                <ArticleCard key={article.id} article={article} index={i} />
+              ))}
+              {rest.length === 0 && (
+                <p className="text-sm text-muted-foreground py-8 text-center">
+                  No more stories in this category right now.
+                </p>
+              )}
+            </div>
+          </div>
+
+          {/* Sidebar — desktop only */}
+          <div className="hidden lg:block lg:w-72 lg:flex-shrink-0 mt-0">
+            <div className="sticky top-20">
+              <TrendingSidebar />
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <BottomNav />
     </div>
   );
 };
-
-const Index = PlaceholderIndex;
 
 export default Index;
