@@ -8,6 +8,8 @@ const ArticlePage = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const article = articles.find((a) => a.id === id);
+  const { toggle, isBookmarked } = useBookmarks();
+  const saved = article ? isBookmarked(article.id) : false;
 
   useEffect(() => {
     window.scrollTo(0, 0);
