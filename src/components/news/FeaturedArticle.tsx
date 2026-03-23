@@ -1,13 +1,15 @@
 import type { Article } from "@/data/newsData";
 import { Clock } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface FeaturedArticleProps {
   article: Article;
 }
 
 const FeaturedArticle = ({ article }: FeaturedArticleProps) => {
+  const navigate = useNavigate();
   return (
-    <article className="scroll-reveal active-press cursor-pointer group">
+    <article onClick={() => navigate(`/article/${article.id}`)} className="scroll-reveal active-press cursor-pointer group">
       <div className="relative overflow-hidden rounded-lg">
         <img
           src={article.image}

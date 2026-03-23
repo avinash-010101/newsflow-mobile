@@ -1,5 +1,6 @@
 import type { Article } from "@/data/newsData";
 import { Clock } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface ArticleCardProps {
   article: Article;
@@ -7,8 +8,10 @@ interface ArticleCardProps {
 }
 
 const ArticleCard = ({ article, index }: ArticleCardProps) => {
+  const navigate = useNavigate();
   return (
     <article
+      onClick={() => navigate(`/article/${article.id}`)}
       className="scroll-reveal active-press cursor-pointer group flex gap-3 py-4 border-b border-news-divider last:border-0"
       style={{ transitionDelay: `${index * 80}ms` }}
     >
