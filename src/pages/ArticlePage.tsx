@@ -45,11 +45,18 @@ const ArticlePage = () => {
           <span className="text-[11px] font-semibold uppercase tracking-wider text-primary">
             {article.category}
           </span>
-          <button className="active-press p-2 -mr-2 text-muted-foreground hover:text-foreground transition-colors">
-            <Share2 className="w-4 h-4" />
-          </button>
-        </div>
-      </header>
+          <div className="flex items-center gap-1">
+            <button
+              onClick={() => toggle(article.id)}
+              className="active-press p-2 -mr-1 text-muted-foreground hover:text-primary transition-colors"
+              aria-label={saved ? "Remove bookmark" : "Save article"}
+            >
+              <Bookmark className={`w-4 h-4 transition-colors ${saved ? "fill-primary text-primary" : ""}`} />
+            </button>
+            <button className="active-press p-2 -mr-2 text-muted-foreground hover:text-foreground transition-colors">
+              <Share2 className="w-4 h-4" />
+            </button>
+          </div>
 
       <article className="container max-w-2xl py-6 pb-16">
         {/* Badge */}

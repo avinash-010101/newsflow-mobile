@@ -1,6 +1,7 @@
 import type { Article } from "@/data/newsData";
-import { Clock } from "lucide-react";
+import { Clock, Bookmark } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useBookmarks } from "@/hooks/useBookmarks";
 
 interface FeaturedArticleProps {
   article: Article;
@@ -8,6 +9,9 @@ interface FeaturedArticleProps {
 
 const FeaturedArticle = ({ article }: FeaturedArticleProps) => {
   const navigate = useNavigate();
+  const { toggle, isBookmarked } = useBookmarks();
+  const saved = isBookmarked(article.id);
+
   return (
     <article onClick={() => navigate(`/article/${article.id}`)} className="scroll-reveal active-press cursor-pointer group">
       <div className="relative overflow-hidden rounded-lg">
@@ -42,6 +46,13 @@ const FeaturedArticle = ({ article }: FeaturedArticleProps) => {
             <Clock className="w-3 h-3" />
             {article.readTime}
           </span>
+          <button
+            onClick={(e) => { e.stopPropagation(); toggle(article.id); }}
+            className="ml-auto p-1.5 -m-1.5 text-muted-foreground hover:text-primary transition-colors"
+            aria-label={saved ? "Remove bookmark" : "Save article"}
+          >
+            <Bookmark className={`w-4 h-4 transition-colors ${saved ? "fill-primary text-primary" : ""}`} />
+          </button>
         </div>
       </div>
     </article>

@@ -1,6 +1,7 @@
 import type { Article } from "@/data/newsData";
-import { Clock } from "lucide-react";
+import { Clock, Bookmark } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useBookmarks } from "@/hooks/useBookmarks";
 
 interface ArticleCardProps {
   article: Article;
@@ -9,6 +10,9 @@ interface ArticleCardProps {
 
 const ArticleCard = ({ article, index }: ArticleCardProps) => {
   const navigate = useNavigate();
+  const { toggle, isBookmarked } = useBookmarks();
+  const saved = isBookmarked(article.id);
+
   return (
     <article
       onClick={() => navigate(`/article/${article.id}`)}
@@ -30,6 +34,13 @@ const ArticleCard = ({ article, index }: ArticleCardProps) => {
             <Clock className="w-3 h-3" />
             {article.readTime}
           </span>
+          <button
+            onClick={(e) => { e.stopPropagation(); toggle(article.id); }}
+            className="ml-auto p-1 -m-1 text-muted-foreground hover:text-primary transition-colors"
+            aria-label={saved ? "Remove bookmark" : "Save article"}
+          >
+            <Bookmark className={`w-3.5 h-3.5 transition-colors ${saved ? "fill-primary text-primary" : ""}`} />
+          </button>
         </div>
       </div>
       <div className="flex-shrink-0 w-24 h-24 overflow-hidden rounded-lg">
