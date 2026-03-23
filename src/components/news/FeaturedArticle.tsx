@@ -7,8 +7,9 @@ interface FeaturedArticleProps {
 }
 
 const FeaturedArticle = ({ article }: FeaturedArticleProps) => {
+  const navigate = useNavigate();
   return (
-    <article className="scroll-reveal active-press cursor-pointer group">
+    <article onClick={() => navigate(`/article/${article.id}`)} className="scroll-reveal active-press cursor-pointer group">
       <div className="relative overflow-hidden rounded-lg">
         <img
           src={article.image}
