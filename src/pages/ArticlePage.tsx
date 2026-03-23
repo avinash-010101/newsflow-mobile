@@ -1,7 +1,8 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { articles } from "@/data/newsData";
-import { ArrowLeft, Clock, Share2 } from "lucide-react";
+import { ArrowLeft, Clock, Share2, Bookmark } from "lucide-react";
 import { useEffect } from "react";
+import { useBookmarks } from "@/hooks/useBookmarks";
 
 const ArticlePage = () => {
   const { id } = useParams<{ id: string }>();
