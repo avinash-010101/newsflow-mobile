@@ -1,5 +1,6 @@
 import type { Article } from "@/data/newsData";
 import { Clock } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface ArticleCardProps {
   article: Article;
