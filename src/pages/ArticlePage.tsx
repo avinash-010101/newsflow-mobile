@@ -57,6 +57,8 @@ const ArticlePage = () => {
               <Share2 className="w-4 h-4" />
             </button>
           </div>
+        </div>
+      </header>
 
       <article className="container max-w-2xl py-6 pb-16">
         {/* Badge */}
