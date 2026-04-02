@@ -2,7 +2,7 @@ import { useState, useMemo } from "react";
 import NewsHeader from "@/components/news/NewsHeader";
 import BreakingTicker from "@/components/news/BreakingTicker";
 import CategoryTabs from "@/components/news/CategoryTabs";
-import FeaturedArticle from "@/components/news/FeaturedArticle";
+import HeroSection from "@/components/news/HeroSection";
 import ArticleCard from "@/components/news/ArticleCard";
 import TrendingSidebar from "@/components/news/TrendingSidebar";
 import BottomNav from "@/components/news/BottomNav";
