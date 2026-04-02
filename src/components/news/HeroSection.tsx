@@ -22,7 +22,7 @@ const HeroSection = ({ featured, secondary }: HeroSectionProps) => {
         className="active-press cursor-pointer group grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] gap-0 rounded-lg overflow-hidden"
       >
         {/* Text side */}
-        <div className="order-2 lg:order-1 p-5 sm:p-6 lg:p-8 flex flex-col justify-center">
+        <div className="order-2 lg:order-1 py-4 sm:py-5 lg:py-6 lg:pr-8 flex flex-col justify-center">
           <div className="flex items-center gap-2 mb-3">
             {featured.isBreaking && (
               <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-primary text-primary-foreground text-[10px] font-bold uppercase tracking-widest rounded animate-pulse">
