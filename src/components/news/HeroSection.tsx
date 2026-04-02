@@ -19,10 +19,10 @@ const HeroSection = ({ featured, secondary }: HeroSectionProps) => {
       {/* Main hero — BBC-style split layout */}
       <div
         onClick={() => navigate(`/article/${featured.id}`)}
-        className="active-press cursor-pointer group grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] gap-0 bg-card rounded-lg overflow-hidden border border-border shadow-sm hover:shadow-md transition-shadow duration-300"
+        className="active-press cursor-pointer group grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] gap-0 rounded-lg overflow-hidden"
       >
         {/* Text side */}
-        <div className="order-2 lg:order-1 p-5 sm:p-6 lg:p-8 flex flex-col justify-center">
+        <div className="order-2 lg:order-1 py-4 sm:py-5 lg:py-6 lg:pr-8 flex flex-col justify-center">
           <div className="flex items-center gap-2 mb-3">
             {featured.isBreaking && (
               <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-primary text-primary-foreground text-[10px] font-bold uppercase tracking-widest rounded animate-pulse">
@@ -71,7 +71,7 @@ const HeroSection = ({ featured, secondary }: HeroSectionProps) => {
             loading="eager"
           />
           {/* Gradient overlay on mobile for visual depth */}
-          <div className="absolute inset-0 bg-gradient-to-t from-card/20 to-transparent lg:bg-none pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent lg:bg-none pointer-events-none" />
         </div>
       </div>
 
@@ -95,7 +95,7 @@ const SecondaryCard = ({ article }: { article: Article }) => {
   return (
     <article
       onClick={() => navigate(`/article/${article.id}`)}
-      className="active-press cursor-pointer group bg-card rounded-lg overflow-hidden border border-border shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col"
+      className="active-press cursor-pointer group overflow-hidden flex flex-col"
     >
       <div className="relative overflow-hidden">
         <img
