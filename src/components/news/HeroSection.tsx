@@ -95,7 +95,7 @@ const SecondaryCard = ({ article }: { article: Article }) => {
   return (
     <article
       onClick={() => navigate(`/article/${article.id}`)}
-      className="active-press cursor-pointer group bg-card rounded-lg overflow-hidden border border-border shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col"
+      className="active-press cursor-pointer group overflow-hidden flex flex-col"
     >
       <div className="relative overflow-hidden">
         <img
