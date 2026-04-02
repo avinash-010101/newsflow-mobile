@@ -19,7 +19,7 @@ const HeroSection = ({ featured, secondary }: HeroSectionProps) => {
       {/* Main hero — BBC-style split layout */}
       <div
         onClick={() => navigate(`/article/${featured.id}`)}
-        className="active-press cursor-pointer group grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] gap-0 bg-card rounded-lg overflow-hidden border border-border shadow-sm hover:shadow-md transition-shadow duration-300"
+        className="active-press cursor-pointer group grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] gap-0 rounded-lg overflow-hidden"
       >
         {/* Text side */}
         <div className="order-2 lg:order-1 p-5 sm:p-6 lg:p-8 flex flex-col justify-center">
