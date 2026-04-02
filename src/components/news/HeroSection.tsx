@@ -71,7 +71,7 @@ const HeroSection = ({ featured, secondary }: HeroSectionProps) => {
             loading="eager"
           />
           {/* Gradient overlay on mobile for visual depth */}
-          <div className="absolute inset-0 bg-gradient-to-t from-card/20 to-transparent lg:bg-none pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent lg:bg-none pointer-events-none" />
         </div>
       </div>
 
