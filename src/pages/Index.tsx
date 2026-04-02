@@ -39,10 +39,10 @@ const Index = () => {
               <h2 className="scroll-reveal font-heading text-lg font-bold text-foreground mb-1">
                 Latest Stories
               </h2>
-              {rest.map((article, i) => (
+              {remaining.map((article, i) => (
                 <ArticleCard key={article.id} article={article} index={i} />
               ))}
-              {rest.length === 0 && (
+              {remaining.length === 0 && filtered.length <= 4 && (
                 <p className="text-sm text-muted-foreground py-8 text-center">
                   No more stories in this category right now.
                 </p>
