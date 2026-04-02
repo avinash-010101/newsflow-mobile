@@ -20,6 +20,8 @@ const Index = () => {
 
   const featured = filtered.find((a) => a.isFeatured) || filtered[0];
   const rest = filtered.filter((a) => a.id !== featured?.id);
+  const heroSecondary = rest.slice(0, 3);
+  const remaining = rest.slice(3);
 
   return (
     <div className="min-h-screen bg-background pb-20 lg:pb-0">
@@ -31,7 +33,7 @@ const Index = () => {
         <div className="lg:flex lg:gap-8">
           {/* Main column */}
           <div className="lg:flex-1">
-            {featured && <FeaturedArticle article={featured} />}
+            {featured && <HeroSection featured={featured} secondary={heroSecondary} />}
 
             <div className="mt-6">
               <h2 className="scroll-reveal font-heading text-lg font-bold text-foreground mb-1">
